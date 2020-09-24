@@ -1,0 +1,32 @@
+@import "~src/app/designSystem/designSystem"
+
+header
+  width: 100%
+  display: grid
+  grid-auto-rows: max-content
+  justify-items: center
+  #backgroundContainer
+    background-color: $yellow_light
+    width: 100%
+    height: 256px
+  #headerImageContainer
+    margin: 0
+    $padding: 16px
+    padding: $padding
+    background-color: white
+    border-radius: 50%
+    //Moving the image up so that it is half contained in the background
+      //and half outside
+    $height: 256px
+    //Ensure that the div is a square (-> gets a circle by border-radius)
+    width: $height
+    height: $height
+    margin-top: (($height/2)+$padding)*-1
+    #headerImage
+      height: 100%
+main
+  #contents
+    #contentsListContainer
+      padding: 0px 16px
+      #contentsList
+        list-style-type: upper-roman
