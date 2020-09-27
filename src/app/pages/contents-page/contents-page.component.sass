@@ -9,6 +9,18 @@ header
     background-color: $yellow_light
     width: 100%
     height: 256px
+    display: grid
+    justify-content: stretch
+    #textTitleTop
+      text-align: center
+      justify-self: center
+      display: none
+      color: white
+      padding-top: 32px
+  #textTitleBottom
+    text-align: center
+    display: block
+    justify-self: center
   #headerImageContainer
     margin: 0
     $padding: 16px
@@ -16,17 +28,74 @@ header
     background-color: white
     border-radius: 50%
     //Moving the image up so that it is half contained in the background
-      //and half outside
+    //and half outside
     $height: 256px
-    //Ensure that the div is a square (-> gets a circle by border-radius)
+    //Ensure that the div is a square (-> becomes a circle by border-radius)
     width: $height
     height: $height
     margin-top: (($height/2)+$padding)*-1
     #headerImage
       height: 100%
 main
+  display: grid
   #contents
     #contentsListContainer
       padding: 0px 16px
       #contentsList
         list-style-type: upper-roman
+
+@media only screen and (max-width: 900px)
+  header
+    #backgroundContainer
+      #textTitleTop
+        display: block
+    #textTitleBottom
+      display: none
+    #headerImageContainer
+      $padding: 16px
+      //Moving the image up so that it is half contained in the background
+      //and half outside
+      $height: 200px
+      //Ensure that the div is a square (-> becomes a circle by border-radius)
+      width: $height
+      height: $height
+      margin-top: (($height/2)+$padding)*-1
+
+  main
+    #contents
+      width: max-content
+      justify-self: center
+
+@media only screen and (max-width: 500px)
+  header
+    #backgroundContainer
+      height: 200px
+    #headerImageContainer
+      $padding: 12px
+      padding: $padding
+      //Moving the image up so that it is half contained in the background
+      //and half outside
+      $height: 128px
+      //Ensure that the div is a square (-> becomes a circle by border-radius)
+      width: $height
+      height: $height
+      margin-top: (($height/2)+$padding)*-1
+  main
+    #contents
+      max-width: 100%
+      #contentsTitle
+        text-align: center
+      #contentsListContainer
+        padding: 0
+        max-width: 100%
+        box-sizing: border-box
+        #contentsList
+          margin: 0
+          box-sizing: border-box
+          padding: 0 16px
+          max-width: 100%
+          li
+            display: block
+            box-sizing: border-box
+            max-width: 80vw
+            text-align: center

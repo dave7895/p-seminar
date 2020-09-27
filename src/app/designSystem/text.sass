@@ -3,11 +3,15 @@
 
 $font-primary: 'Roboto', sans-serif
 $font-secondary: 'Work Sans', sans-serif
-
+.heading-1
+  font-size: 30px
+  font-family: $font-primary
+  font-weight: 600
+  color: $color-text-primary
 .heading-2
   font-size: 24px
   font-family: $font-primary
-  font-family: 500
+  font-weight: 500
   color: $color-text-primary
 .subheading-2
   font-family: $font-secondary
@@ -15,3 +19,11 @@ $font-secondary: 'Work Sans', sans-serif
   font-size: 20px
   font-weight: 400
   padding: 6px 0
+
+@media only screen and (max-width: 600px)
+  .heading-1
+    font-size: 28px
+  .heading-2
+    font-size: 20px
+  .subheading-2
+    font-size: 16px
