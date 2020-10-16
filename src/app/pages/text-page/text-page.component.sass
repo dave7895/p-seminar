@@ -1,0 +1,77 @@
+@import "~src/app/designSystem/designSystem"
+
+main
+  #textContentContainer
+    width: 100%
+    border: $border-thin
+    padding: 16px
+    box-sizing: border-box
+    h3
+      @extend .heading-2
+      margin-bottom: 4px
+    #editor
+      @extend .small
+      margin-bottom: 12px
+      font-weight: 500
+      font-style: italic
+    #textContainer
+      .sentenceContainer
+        display: grid
+        grid-template-columns: max-content max-content 1fr max-content
+        align-items: stretch
+        row-gap: 8px
+        margin-top: 32px
+        margin-bottom: 32px
+        .latinSentenceContainer
+          @extend .text
+          //Set gap over gap of grid instead
+          padding: 0 16px
+          .singleWord
+            cursor: pointer
+            transition: background-color 120ms
+            padding: 8px 2px
+            display: inline-block
+            margin: 4px 1px
+            border-radius: 4px
+            &:hover
+              font-weight: 700
+              background-color: $grey-light
+            &.firstWord
+              text-transform: capitalize
+      .sentenceCounter
+        @extend .small
+        align-self: center
+        color: $azul
+        // If the tool container moves down for responsive design it should span its row as well
+        grid-row: span 2
+      .sentenceMarker
+        display: block
+        height: 100%
+        width: 8px
+        margin: 0 8px
+        background-color: $azul
+        // If the tool container moves down for responsive design it should span its row as well
+        grid-row: span 2
+      .sentenceToolContainer
+        width: 64px
+        display: grid
+        align-content: center
+        align-self: center
+        .indentTextButton
+@media only screen and (max-width: 800px)
+  main
+    #textContentContainer
+      h3
+        text-align: center
+      #editor
+        text-align: center
+        width: 100%
+        display: block
+      #textContainer
+        .sentenceToolContainer
+          grid-row: 2
+          grid-column: 3
+          display: grid
+          width: 100%
+          justify-content: stretch
+          justify-items: flex-end

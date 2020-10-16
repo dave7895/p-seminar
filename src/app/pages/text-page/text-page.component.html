@@ -1,0 +1,42 @@
+<app-header
+[title]="this.textData.title"
+imgSrc="./assets/images/icons/svg/exampleImage3.svg"
+></app-header>
+<main>
+  <section id="textContentContainer">
+    <h3>{{this.textData.sourceDesc}}</h3>
+    <small id="editor">(Formatiert von {{this.textData.author}})</small>
+    <section id="textContainer">
+      <div class="sentenceContainer" *ngFor="let sentence of textData.sentences; let sentenceCounter = index">
+        <small class="sentenceCounter">{{sentenceCounter+1}}</small>
+        <div class="sentenceMarker"></div>
+        <p class="latinSentenceContainer">
+          <!--Show a left margin after every subsentence if and only if the sentence should be indented-->
+          <span *ngFor="let subsentence of sentence.subSentences; let isFirstSubSentence = first"
+          [style.marginLeft.px]="isSentenceIndented(sentenceCounter) ? subsentence.getIndentationDepth()*32 : 0">
+            <span class="singleWord" *ngFor="let word of subsentence.words;  let isFirstWord = first"
+            [class.firstWord]="isFirstWord && isFirstSubSentence"
+            (click)="showTranslation(word)">
+              {{word.latinWord}}
+            </span>
+            <!--Show a line break if and only if the sentence should be indented-->
+            <ng-template [ngIf]="isSentenceIndented(sentenceCounter)">
+              <br>
+            </ng-template>
+          </span>
+
+        </p>
+        <div class="sentenceToolContainer">
+            <!--Toggles indention on click-->
+            <button mat-icon-button aria-label="Text einrücken"
+            (click)="isSentenceIndented(sentenceCounter) ? hideIndention(sentenceCounter) : indentSentence(sentenceCounter)"
+            class="indentTextButton iconButton">
+            <!--Displayed in azul if sentence is already being indented-->
+              <mat-icon [class.activated]="isSentenceIndented(sentenceCounter)">format_indent_increase</mat-icon>
+            </button>
+          </div>
+      </div>
+    </section>
+
+  </section>
+</main>

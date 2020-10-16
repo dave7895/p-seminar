@@ -1,0 +1,25 @@
+@import "~src/app/designSystem/designSystem"
+
+#translationDialog
+  justify-content: stretch
+  justify-items: stretch
+  display: grid
+  header
+    display: block
+    margin: 0
+    min-width: 250px
+    background-color: $azul
+    padding: 16px
+    #latinWord
+      @extend .heading-2
+      margin: 0
+      padding: 0
+      color: white
+    #grammaticalForm
+      @extend .small
+      font-weight: 400
+      font-size: 14px
+      color: white
+  #translation
+    @extend .text
+    padding: 16px

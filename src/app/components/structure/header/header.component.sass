@@ -1,0 +1,69 @@
+@import "~src/app/designSystem/designSystem"
+
+header
+  width: 100%
+  display: grid
+  grid-auto-rows: max-content
+  justify-items: center
+  #backgroundContainer
+    background-color: $yellow_light
+    width: 100%
+    height: 256px
+    display: grid
+    justify-content: stretch
+    #textTitleTop
+      text-align: center
+      justify-self: center
+      display: none
+      color: white
+      padding-top: 32px
+  #textTitleBottom
+    text-align: center
+    display: block
+    justify-self: center
+  #headerImageContainer
+    margin: 0
+    $padding: 16px
+    padding: $padding
+    background-color: white
+    border-radius: 50%
+    //Moving the image up so that it is half contained in the background
+    //and half outside
+    $height: 256px
+    //Ensure that the div is a square (-> becomes a circle by border-radius)
+    width: $height
+    height: $height
+    margin-top: (($height/2)+$padding)*-1
+    #headerImage
+      height: 100%
+@media only screen and (max-width: 900px)
+  header
+    #backgroundContainer
+      #textTitleTop
+        display: block
+    #textTitleBottom
+      display: none
+    #headerImageContainer
+      $padding: 16px
+      //Moving the image up so that it is half contained in the background
+      //and half outside
+      $height: 200px
+      //Ensure that the div is a square (-> becomes a circle by border-radius)
+      width: $height
+      height: $height
+      margin-top: (($height/2)+$padding)*-1
+
+@media only screen and (max-width: 500px)
+  header
+    #backgroundContainer
+      height: 200px
+    #headerImageContainer
+      $padding: 12px
+      padding: $padding
+      //Moving the image up so that it is half contained in the background
+      //and half outside
+      $height: 128px
+      //Ensure that the div is a square (-> becomes a circle by border-radius)
+      width: $height
+      height: $height
+      margin-top: (($height/2)+$padding)*-1
