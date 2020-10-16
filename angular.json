@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/styles.sass"
             ],
             "stylePreprocessorOptions": {
@@ -128,6 +129,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "lateinPSeminar"
 }

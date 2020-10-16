@@ -1,20 +1,15 @@
-<header>
-  <div id="backgroundContainer">
-    <h1 id="textTitleTop" class="heading-1">Orpheus und Euridice</h1>
-  </div>
-  <figure id="headerImageContainer">
-    <img id="headerImage" src="./assets/images/icons/svg/exampleImage2.svg" alt="Icon für dieses Buch">
-  </figure>
-  <h1 id="textTitleBottom" class="heading-1">Orpheus und Euridice</h1>
-</header>
+<app-header
+[title]="'Titel des Buches'"
+imgSrc="./assets/images/icons/svg/exampleImage4.svg"
+></app-header>
 <main>
   <div id="contents">
   <h2 class="heading-2" id="contentsTitle">Inhaltsverzeichnis</h2>
   <section id="contentsListContainer">
     <ol id="contentsList">
-      <li class="subheading-2">Kapitel 1: Lorem ipsum cum dolor</li>
-      <li class="subheading-2">Kapitel 1: Lorem ipsum cum dolor</li>
-      <li class="subheading-2">Kapitel 1: Lorem ipsum cum dolor</li>
+      <li class="subheading-2" [routerLink]="['/text']">Kapitel 1: Lorem ipsum cum dolor</li>
+      <li class="subheading-2" [routerLink]="['/text']">Kapitel 1: Lorem ipsum cum dolor</li>
+      <li class="subheading-2" [routerLink]="['/text']">Kapitel 1: Lorem ipsum cum dolor</li>
     </ol>
   </section>
   </div>
