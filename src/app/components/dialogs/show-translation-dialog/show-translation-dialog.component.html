@@ -4,4 +4,12 @@
     <small id="grammaticalForm">{{word.grammaticalForm}}</small>
   </header>
   <p id="translation">{{word.germanTranslation}}</p>
+  <footer id="buttonSection">
+    <button mat-stroked-button class="secondaryButton" (click)="closeDialog()">
+      Schließen
+    </button>
+    <button mat-flat-button class="primaryButton" (click)="addWordToList()">
+      Merken
+    </button>
+  </footer>
 </section>

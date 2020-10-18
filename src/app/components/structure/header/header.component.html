@@ -1,5 +1,11 @@
 <header>
-  <div id="backgroundContainer">
+  <div id="topBar" [style.backgroundColor]="color">
+    <button mat-icon-button id="goBackButton" (click)="goBack()" >
+      <mat-icon>keyboard_backspace</mat-icon>
+    </button>
+    <h3>{{title}}</h3>
+  </div>
+  <div id="backgroundContainer" [style.backgroundColor]="color">
     <h1 id="textTitleTop" class="heading-1">{{title}}</h1>
   </div>
   <figure id="headerImageContainer">

@@ -1,3 +1,4 @@
+import { Color } from './../../constants/colors';
 import { TeiConverterService } from './../../services/tei-converter.service';
 import { ShowTranslationDialogComponent } from './../../components/dialogs/show-translation-dialog/show-translation-dialog.component';
 import { Component, OnInit } from '@angular/core';
@@ -72,7 +73,10 @@ export class TextPageComponent implements OnInit {
               </TEI>`;
 
   textData: TextData = new TextData();
-
+  // Used to change the header color
+  Color = Color;
+  // List of all the words that the user wants to memorize
+  memorizedWordsList: Set<Word> = new Set();
 constructor(
   private dialog: MatDialog,
   private converter: TeiConverterService) {
@@ -88,8 +92,11 @@ showTranslation(word: Word): void{
     // Pushing the data into the component
     instance.word = word;
     console.log(word);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+    dialogRef.afterClosed().subscribe((result: Word) => {
+      // If the dialog component returns a word this word should be memorized
+      if (result){
+        this.memorizedWordsList.add(result);
+      }
     });
   }
   /**
@@ -104,5 +111,10 @@ showTranslation(word: Word): void{
   }
   hideIndention(sentenceIndex: number): void{
     this.indentedSentences.delete(sentenceIndex);
+  }
+  // Removes a word from the list of memorized words
+  removeWordFromList(word: Word): void{
+    console.log(word);
+    this.memorizedWordsList.delete(word);
   }
 }

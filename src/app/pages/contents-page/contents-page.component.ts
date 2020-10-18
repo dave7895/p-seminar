@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Color } from 'src/app/constants/colors';
 
 @Component({
   selector: 'app-contents-page',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contents-page.component.sass']
 })
 export class ContentsPageComponent implements OnInit {
-
+  // Used to change the header color
+  Color = Color;
   constructor() { }
 
   ngOnInit(): void {

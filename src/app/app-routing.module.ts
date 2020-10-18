@@ -5,8 +5,10 @@ import { ContentsPageComponent } from './pages/contents-page/contents-page.compo
 
 
 const routes: Routes = [
-  {path: 'contents', component: ContentsPageComponent},
-  {path: 'text', component: TextPageComponent}
+  // The level specifies how "deep" a component is in the website structure-> Used for an appropriate animation
+  {path: 'contents', component: ContentsPageComponent,  data: {level: '0'}},
+  {path: 'text', component: TextPageComponent,   data: {level: '1'}},
+  {path: '**', redirectTo: '/contents'}
 ];
 
 @NgModule({

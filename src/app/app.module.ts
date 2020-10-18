@@ -14,6 +14,7 @@ import {MatButtonModule} from '@angular/material/button';
 // Used to display material icons
 import {MatIconModule} from '@angular/material/icon';
 import { ShowTranslationDialogComponent } from './components/dialogs/show-translation-dialog/show-translation-dialog.component';
+import { WordListComponent } from './components/content/word-list/word-list.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ShowTranslationDialogComponent } from './components/dialogs/show-transl
     HeaderComponent,
     ShowTranslationDialogComponent,
     TextPageComponent,
+    WordListComponent,
   ],
   imports: [
     BrowserAnimationsModule,

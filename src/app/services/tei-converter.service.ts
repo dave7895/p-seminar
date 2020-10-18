@@ -31,7 +31,6 @@ export class TeiConverterService {
     };
 
     const jsonData = Parser.parse(xmlData, options);
-    console.log(jsonData);
     const textData: TextData = new TextData();
 
     /**
@@ -67,7 +66,6 @@ export class TeiConverterService {
         }
         // Add subsentence to the last sentence
         textData.sentences[textData.sentences.length - 1].subSentences.push(subSentence);
-        console.log(subSentenceObject);
         // Test if word is an array, since if there is only a single word it has been converted into an object
         if (Array.isArray(subSentenceObject.w)){
           for (const wordObject of subSentenceObject.w){
@@ -97,7 +95,6 @@ export class TeiConverterService {
         }
       }
     }
-    console.log(textData);
     return textData;
   }
 }

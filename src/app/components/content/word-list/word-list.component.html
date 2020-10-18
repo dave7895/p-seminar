@@ -1,0 +1,20 @@
+<section id="wordList">
+  <h3 id="title">Wörter-Liste</h3>
+  <small id="caption">Liste der gemerkten Wörter</small>
+  <section id="wordsTable">
+    <p id="noWordsMemorizedNote" *ngIf="words.size == 0">(Noch keine Worte gemerkt)</p>
+    <div class="wordsTableCell" *ngFor="let word of words">
+      <div class="latinWordContainer">
+        <p>{{word.latinWord}}</p>
+      </div>
+      <div class="translationContainer">
+        <p class="translation">-> {{word.germanTranslation}}</p>
+      </div>
+      <div class="removeButtonContainer">
+        <button mat-stroked-button class="secondaryButton" (click)="removeWordFromList(word)">
+          Entfernen
+        </button>
+      </div>
+    </div>
+  </section>
+</section>

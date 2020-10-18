@@ -1,6 +1,7 @@
 <app-header
 [title]="this.textData.title"
 imgSrc="./assets/images/icons/svg/exampleImage3.svg"
+[color]="Color.yellow"
 ></app-header>
 <main>
   <section id="textContentContainer">
@@ -37,6 +38,7 @@ imgSrc="./assets/images/icons/svg/exampleImage3.svg"
           </div>
       </div>
     </section>
-
   </section>
+  <app-word-list id="wordsList"
+  [words]="memorizedWordsList" (removeWordEvent)="removeWordFromList($event)"></app-word-list>
 </main>

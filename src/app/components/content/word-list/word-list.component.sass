@@ -1,0 +1,79 @@
+@import "~src/app/designSystem/designSystem"
+
+#wordList
+  width: 100%
+  border: $border-thin
+  background-color: white
+  height: 100%
+  padding: 16px
+  box-sizing: border-box
+  #title
+    @extend .heading-2
+    margin-bottom: 4px
+  #caption
+    @extend .small
+    margin-bottom: 12px
+    font-weight: 500
+    font-style: italic
+  #wordsTable
+    width: 100%
+    display: grid
+    justify-content: stretch
+    padding: 32px 64px
+    row-gap: 16px
+    box-sizing: border-box
+    #noWordsMemorizedNote
+      @extend .small
+      margin-bottom: 12px
+      font-weight: 500
+      font-style: italic
+      grid-column: 1 / 3
+      text-align: center
+    .wordsTableCell
+      display: grid
+      padding: 0
+      box-sizing: border-box
+      justify-content: stretch
+      width: 100%
+      grid-template-columns: 100px 1fr max-content
+      column-gap: 64px
+      align-items: center
+      .latinWordContainer
+        @extend .subheading-1
+        font-size: 16px
+        p
+          margin: 0
+          padding: 0
+      .translationContainer
+        @extend .small
+        font-weight: 500
+        font-size: 16px
+        p
+          margin: 0
+          padding: 0
+@media only screen and (max-width: 750px)
+  #wordList
+    #wordsTable
+      padding: 16px
+      .wordsTableCell
+        grid-template-columns: 100px 1fr max-content
+        column-gap: 16px
+@media only screen and (max-width: 450px)
+  #wordList
+    #wordsTable
+      padding: 8px
+      .wordsTableCell
+        grid-template-columns: max-content 1fr max-content
+        column-gap: 8px
+@media only screen and (max-width: 350px)
+  #wordList
+    #wordsTable
+      .wordsTableCell
+        grid-template-columns: max-content 1fr
+        .removeButtonContainer
+          grid-column: span 2
+          width: 100%
+          padding-top: 8px
+          padding-bottom: 12px
+          button
+            width: 100%

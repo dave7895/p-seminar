@@ -1,4 +1,6 @@
+import { Color } from './../../../constants/colors';
 import { Component, Input, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -17,9 +19,16 @@ export class HeaderComponent implements OnInit {
    */
   @Input() imgSrc: string;
 
-  constructor() { }
+  /**
+   * Color that should be used for the background
+   */
+  @Input() color: Color = Color.azul;
+  constructor(private location: Location) { }
 
   ngOnInit(): void {
   }
-
+  // Navigate to the previous page
+  goBack(): void{
+    this.location.back();
+  }
 }
