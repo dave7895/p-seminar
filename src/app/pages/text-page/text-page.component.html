@@ -40,5 +40,6 @@ imgSrc="./assets/images/icons/svg/exampleImage3.svg"
     </section>
   </section>
   <app-word-list id="wordsList"
+  [textId]="textId"
   [words]="memorizedWordsList" (removeWordEvent)="removeWordFromList($event)"></app-word-list>
 </main>

@@ -15,7 +15,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { ShowTranslationDialogComponent } from './components/dialogs/show-translation-dialog/show-translation-dialog.component';
 import { WordListComponent } from './components/content/word-list/word-list.component';
-
+import { PrintWordsPageComponent } from './pages/print-words-page/print-words-page.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { WordListComponent } from './components/content/word-list/word-list.comp
     ShowTranslationDialogComponent,
     TextPageComponent,
     WordListComponent,
+    PrintWordsPageComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -32,7 +34,8 @@ import { WordListComponent } from './components/content/word-list/word-list.comp
     AppRoutingModule,
     MatDialogModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

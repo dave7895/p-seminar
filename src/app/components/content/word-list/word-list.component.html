@@ -1,4 +1,11 @@
 <section id="wordList">
+  <button mat-flat-button class="primaryButton"
+  *ngIf="!static"
+  (click)="printWordsList()"
+  id="printWordsButton">
+      <span id="printWordsButtonText">Drucken</span>
+      <mat-icon>print</mat-icon>
+  </button>
   <h3 id="title">Wörter-Liste</h3>
   <small id="caption">Liste der gemerkten Wörter</small>
   <section id="wordsTable">
@@ -11,7 +18,7 @@
         <p class="translation">-> {{word.germanTranslation}}</p>
       </div>
       <div class="removeButtonContainer">
-        <button mat-stroked-button class="secondaryButton" (click)="removeWordFromList(word)">
+        <button mat-stroked-button class="secondaryButton" (click)="removeWordFromList(word)" *ngIf="!static">
           Entfernen
         </button>
       </div>

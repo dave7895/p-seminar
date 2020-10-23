@@ -23,12 +23,12 @@ export class HeaderComponent implements OnInit {
    * Color that should be used for the background
    */
   @Input() color: Color = Color.azul;
-  constructor(private location: Location) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
   // Navigate to the previous page
   goBack(): void{
-    this.location.back();
+    window.history.back();
   }
 }

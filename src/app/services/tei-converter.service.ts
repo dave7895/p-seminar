@@ -45,30 +45,49 @@ export class TeiConverterService {
     // Extracting sentences
     for (const sentenceObject of jsonData.TEI.text.div.s){
       textData.sentences.push(new Sentence());
+      console.log(sentenceObject);
+      if (!Array.isArray(sentenceObject.cl)){
+        sentenceObject.cl = [sentenceObject.cl];
+      }
       // Extracting sub-sentences
       for (const subSentenceObject of sentenceObject.cl){
-        const subSentence: SubSentence = new SubSentence();
-        // Figure out which type of subsentence
-        subSentence.type = subSentenceObject.attr.attr_type === 'hs' ? 'MAIN' : 'SUBORDINATE';
-        // Since subordinate clauses can have different levels, they have to be extracted
-        if (subSentence.type === 'SUBORDINATE') {
-          const type = subSentenceObject.attr.attr_type.match(/\d+/);
-          // If there is a number in the string
-          if (type != null){
-            const levelNumber = subSentenceObject.attr.attr_type.match(/\d+/)[0];
-            // Convert the extracted string to a number
-            subSentence.level = parseInt(levelNumber, 10);
+        if (subSentenceObject){
+          const subSentence: SubSentence = new SubSentence();
+          // Figure out which type of subsentence
+          subSentence.type = subSentenceObject.attr.attr_type === 'hs' ? 'MAIN' : 'SUBORDINATE';
+          // Since subordinate clauses can have different levels, they have to be extracted
+          if (subSentence.type === 'SUBORDINATE') {
+            const type = subSentenceObject.attr.attr_type.match(/\d+/);
+            // If there is a number in the string
+            if (type != null){
+              const levelNumber = subSentenceObject.attr.attr_type.match(/\d+/)[0];
+              // Convert the extracted string to a number
+              subSentence.level = parseInt(levelNumber, 10);
+            }
+            // Indend once if it is a subordinate clause without any specification
+            else{
+              subSentence.level = 1;
+            }
           }
-          // Indend once if it is a subordinate clause without any specification
+          // Add subsentence to the last sentence
+          textData.sentences[textData.sentences.length - 1].subSentences.push(subSentence);
+          // Test if word is an array, since if there is only a single word it has been converted into an object
+          if (Array.isArray(subSentenceObject.w)){
+            for (const wordObject of subSentenceObject.w){
+              // Add the word into the word-Array after filling in the properties
+              const lastIndexOfSubsenteceArray = textData.sentences[textData.sentences.length - 1].subSentences.length - 1;
+              const word: Word = new Word();
+
+              word.latinWord = wordObject.text;
+              word.germanTranslation = wordObject.attr.attr_notation;
+              word.grammaticalForm = wordObject.attr.attr_pos;
+
+              textData.sentences[textData.sentences.length - 1].subSentences[lastIndexOfSubsenteceArray].words.push(word);
+            }
+          }
           else{
-            subSentence.level = 1;
-          }
-        }
-        // Add subsentence to the last sentence
-        textData.sentences[textData.sentences.length - 1].subSentences.push(subSentence);
-        // Test if word is an array, since if there is only a single word it has been converted into an object
-        if (Array.isArray(subSentenceObject.w)){
-          for (const wordObject of subSentenceObject.w){
+            const wordObject = subSentenceObject.w;
+
             // Add the word into the word-Array after filling in the properties
             const lastIndexOfSubsenteceArray = textData.sentences[textData.sentences.length - 1].subSentences.length - 1;
             const word: Word = new Word();
@@ -79,19 +98,6 @@ export class TeiConverterService {
 
             textData.sentences[textData.sentences.length - 1].subSentences[lastIndexOfSubsenteceArray].words.push(word);
           }
-        }
-        else{
-          const wordObject = subSentenceObject.w;
-
-          // Add the word into the word-Array after filling in the properties
-          const lastIndexOfSubsenteceArray = textData.sentences[textData.sentences.length - 1].subSentences.length - 1;
-          const word: Word = new Word();
-
-          word.latinWord = wordObject.text;
-          word.germanTranslation = wordObject.attr.attr_notation;
-          word.grammaticalForm = wordObject.attr.attr_pos;
-
-          textData.sentences[textData.sentences.length - 1].subSentences[lastIndexOfSubsenteceArray].words.push(word);
         }
       }
     }

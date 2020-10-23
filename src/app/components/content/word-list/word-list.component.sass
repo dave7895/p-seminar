@@ -5,8 +5,17 @@
   border: $border-thin
   background-color: white
   height: 100%
+  display: grid
   padding: 16px
+  position: relative
   box-sizing: border-box
+  #printWordsButton
+    position: absolute
+    top: 40px
+    right: 32px
+    #printWordsButtonText
+      margin-right: 8px
+
   #title
     @extend .heading-2
     margin-bottom: 4px
@@ -77,3 +86,12 @@
           padding-bottom: 12px
           button
             width: 100%
+@media print
+  button
+    display: none !important
+  #wordList
+    #title
+      justify-self: center
+    #caption
+      justify-self: center
+      color: $azul
