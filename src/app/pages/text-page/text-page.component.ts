@@ -1,4 +1,5 @@
 import { Color } from './../../constants/colors';
+import { colorsToTexts } from './../../static-data/colorsToTexts';
 import { TeiConverterService } from './../../services/tei-converter.service';
 import { ShowTranslationDialogComponent } from './../../components/dialogs/show-translation-dialog/show-translation-dialog.component';
 import { Component, OnInit } from '@angular/core';
@@ -17,10 +18,10 @@ export class TextPageComponent implements OnInit {
   // Chose a set instead of an array, due to efficiency and easier API for removing
   indentedSentences: Set<number> = new Set();
   teiText = '';
-
+  colorsToTexts = colorsToTexts;
+  textColor: Color;
   textData: TextData = new TextData();
   // Used to change the header color
-  Color = Color;
   // List of all the words that the user wants to memorize
   memorizedWordsList: Set<Word> = new Set();
   textId: string;
@@ -30,6 +31,7 @@ constructor(
   private route: ActivatedRoute,
   private converter: TeiConverterService) {
     this.textId = this.route.snapshot.paramMap.get('textId');
+    this.textColor = colorsToTexts[parseInt(this.textId, 10)-1];
     this.http.get(`assets/texts/text_${this.textId}.xml`, { responseType: 'text' as 'text'}).subscribe(data => {
       this.textData = this.converter.convertTeiToObject(data);
   });
